@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nomes - API</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-neutral-700 text-slate-300	"	>
+    <div class="container mx-auto 4 space-y-2 mb-8 mt-12 gap-4">
+    <h1 class="text-2xl  text-center">Nomes Brasileiros - API</h1>
+    <span class="inline-block">A API segue um conjunto de nomes brasileiros e sobrenomes, feito para quem preicsa de dados ficticios de usuarios.</span>
+    <div>
+    <span class="inline-block">A API é feita com a REST Framkework do Django e o banco de dados PostgreSQL, hospedagem da aplicações é feita no render.com e banco no neon.tech</span>
+    <span class="inline-block">A lentidão incial é causada devido a Neon.tech colocar o banco em modo de suspensão quando não está sendo acessado.</span>
+    </div>
+    <h1 class="text-2xl">Como usar:</h1>
+    <h3>Exemplo com JS:</h3>
+    <div class="relative mx-auto mt-24">
+      <div class="bg-gray-900 text-white p-4 rounded-md">
+          <div class="flex justify-between items-center mb-2">
+              <span class="text-gray-400">Code:</span>
+              <button class="code bg-gray-800 hover:bg-gray-700 text-gray-300 px-3 py-1 rounded-md" data-clipboard-target="#code">
+          Copy
+        </button>
+          </div>
+          <div class="overflow-x-auto">
+              <pre id="code" class="text-gray-300">
+                <code> 
+                  try {
+                    const response = await fetch('https://nomes-api.onrender.com/');
+                    const data = await response.json();
+                    const dataList = document.getElementById('data');
+                    
+                    if (data && data.results && Array.isArray(data.results)) {
+                      data.results.forEach(item => {
+                        const listItem = document.createElement('li');
+                        listItem.textContent = `${item.nome} ${item.sobrenome}`;
+                        dataList.appendChild(listItem);
+                      });
+                    } else {
+                      
+                    }
+                  } catch (error) {
+                    console.error(error);
+                  }
+                });
+               });
+                </code>
+  
+              </pre>
+          </div>
+      </div>
+  </div>
+
+
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+<script>
+    new ClipboardJS('.code');
+</script>
+</html>
